@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Movies {
+  id            Int       @default(autoincrement()) @id
+  title         String    @unique
+  description   String  
+  rating        Float
+  image         String?
+  created_at    DateTime  @default(now())
+  updated_at    DateTime?
+
+  @@map("movies")
+}
+
